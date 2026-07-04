@@ -798,6 +798,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
   transition: transform var(--duration) var(--ease),
               box-shadow var(--duration) var(--ease);
 }
@@ -1064,8 +1065,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .qm-footer__grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1.2fr;
-  gap: 48px;
+  grid-template-columns: 1.6fr 0.9fr 0.9fr 1.2fr;
+  gap: 40px;
 }
 
 /* Brand column */
@@ -1205,6 +1206,58 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 /* ── 17. Responsive ─────────────────────────────────────────── */
+/* ── Landscape video embed (16:9) for portfolio page ─────────── */
+.portfolio-video-wrap--landscape {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 16px 40px var(--color-primary-shadow);
+  background: #000;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.portfolio-video-wrap--landscape iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Navbar drawer separator ─────────────────────────────────── */
+.qm-navbar__drawer-sep {
+  height: 1px;
+  background: var(--color-border);
+  margin: 8px 0;
+}
+
+/* ── Page hero top padding (accounts for sticky navbar) ──────── */
+.page-hero {
+  background: linear-gradient(145deg, #F4F2FA 0%, #EBE6F9 60%, #DDD5F5 100%);
+  padding: 96px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(97,76,170,0.10) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  pointer-events: none;
+}
+
+/* ── 17. Responsive ─────────────────────────────────────────── */
+@media (max-width: 1199px) {
+  .qm-footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
 @media (max-width: 991px) {
   h1 { font-size: 38px; }
   h2, .sec-title { font-size: 30px; }
@@ -1215,7 +1268,8 @@ ul { list-style: none; padding: 0; margin: 0; }
   .qm-navbar__toggle { display: flex; align-items: center; }
 
   .hero-section { padding: 50px 0 60px; }
-  .hero-text p { max-width: 100%; }
+  .page-hero    { padding: 70px 0 60px; }
+  .hero-text p  { max-width: 100%; }
   .hero-video-wrap { margin-top: 36px; }
 
   .bento-grid-services { grid-template-columns: 1fr 1fr; }
@@ -1230,10 +1284,14 @@ ul { list-style: none; padding: 0; margin: 0; }
   .contact-form-card { padding: 32px 24px; }
 
   /* Footer */
-  .qm-footer__grid { grid-template-columns: 1fr; gap: 32px; }
+  .qm-footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .qm-footer__cta-inner { flex-direction: column; align-items: flex-start; }
   .qm-footer__bottom { flex-direction: column; align-items: flex-start; }
   .qm-footer__brand-desc { max-width: 100%; }
+}
+
+@media (max-width: 767px) {
+  .qm-footer__grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
 @media (max-width: 575px) {

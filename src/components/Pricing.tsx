@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 const CTA_URL = "https://cal.com/quantmedia/15min?overlayCalendar=true";
 
 const PLANS = [
@@ -74,7 +76,7 @@ export default function Pricing() {
                 <ul className="pricing-feature-list">
                   {plan.features.map((f) => (
                     <li key={f}>
-                      <i className="fas fa-check feat-check"></i>
+                      <Icon name="check" className="feat-check" />
                       {f}
                     </li>
                   ))}
@@ -86,7 +88,7 @@ export default function Pricing() {
                   style={{ justifyContent: "center" }}
                 >
                   Get Started
-                  <i className="fas fa-arrow-right" style={{ fontSize: 12 }}></i>
+                  <Icon name="arrow-right" style={{ fontSize: 12 }} />
                 </a>
               </div>
             </div>

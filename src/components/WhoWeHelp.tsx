@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 const CHECKLIST = [
   "0% Fluff — every cut has a purpose",
   "Proprietary client portal & dashboard",
@@ -13,7 +15,8 @@ export default function WhoWeHelp() {
           <div className="col-lg-6 col-md-12 mb-4">
             <img
               src="/img/our-work2.png"
-              alt="Quant Media work"
+              alt="Quant Media video retention work sample showing before and after editing"
+              loading="lazy"
             />
           </div>
 
@@ -33,7 +36,7 @@ export default function WhoWeHelp() {
               {CHECKLIST.map((item) => (
                 <div key={item} className="checklist-item">
                   <span className="check-icon">
-                    <i className="fas fa-check"></i>
+                    <Icon name="check" />
                   </span>
                   {item}
                 </div>

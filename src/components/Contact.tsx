@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 const FORM_ACTION = "https://formspree.io/f/xaqgqejp";
 
 export default function Contact() {
@@ -20,6 +22,7 @@ export default function Contact() {
                   name="name"
                   className="qm-input"
                   placeholder="Your Name"
+                  aria-label="Your name"
                   required
                 />
                 <input
@@ -27,6 +30,7 @@ export default function Contact() {
                   name="email"
                   className="qm-input"
                   placeholder="Your Email"
+                  aria-label="Your email address"
                   required
                 />
                 <input
@@ -34,6 +38,7 @@ export default function Contact() {
                   name="subject"
                   className="qm-input"
                   placeholder="Subject"
+                  aria-label="Message subject"
                   required
                 />
                 <textarea
@@ -41,6 +46,7 @@ export default function Contact() {
                   className="qm-input"
                   rows={5}
                   placeholder="Your Message"
+                  aria-label="Your message"
                   required
                   style={{ resize: "vertical" }}
                 ></textarea>
@@ -50,7 +56,7 @@ export default function Contact() {
                   style={{ marginTop: 4, justifyContent: "center" }}
                 >
                   Send Message
-                  <i className="fas fa-paper-plane" style={{ fontSize: 12 }}></i>
+                  <Icon name="paper-plane" style={{ fontSize: 12 }} />
                 </button>
               </form>
             </div>

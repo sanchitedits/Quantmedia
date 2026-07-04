@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Icon from "./Icon";
 
-const NAV_LINKS = [
-  { label: "Services",  href: "#what-we-do" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Pipeline",  href: "#how-we-do" },
-  { label: "Pricing",   href: "#pricing" },
-  { label: "Contact",   href: "#contact" },
+const SECTION_LINKS = [
+  { label: "Services",     anchor: "what-we-do" },
+  { label: "Portfolio",    anchor: "portfolio" },
+  { label: "Pipeline",     anchor: "how-we-do" },
+  { label: "Pricing",      anchor: "pricing" },
+  { label: "Contact",      anchor: "contact" },
 ];
 
 const CTA_URL = "https://cal.com/quantmedia/15min?overlayCalendar=true";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]         = useState(false);
+  const { pathname }            = useLocation();
+  const isHome                  = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -22,57 +26,58 @@ export default function Navbar() {
 
   const close = () => setOpen(false);
 
+  const getHref = (anchor: string) => (isHome ? `#${anchor}` : `/#${anchor}`);
+
   return (
-    <nav className={`qm-navbar${scrolled ? " qm-navbar--scrolled" : ""}`}>
+    <nav className={`qm-navbar${scrolled ? " qm-navbar--scrolled" : ""}`} role="navigation" aria-label="Main navigation">
       <div className="container qm-navbar__inner">
-        {/* ── Logo ── */}
-        <a href="/" className="qm-navbar__brand" onClick={close}>
+        <Link to="/" className="qm-navbar__brand" onClick={close} aria-label="Quant Media home">
           <span className="qm-navbar__logo-icon">Q</span>
           Quant Media
-        </a>
+        </Link>
 
-        {/* ── Desktop nav ── */}
-        <ul className="qm-navbar__links">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a className="qm-navbar__link" href={link.href}>
+        <ul className="qm-navbar__links" role="list">
+          {SECTION_LINKS.map((link) => (
+            <li key={link.anchor}>
+              <a className="qm-navbar__link" href={getHref(link.anchor)}>
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* ── Desktop CTA ── */}
-        <a href={CTA_URL} className="btn-dark-pill qm-navbar__cta">
+        <a href={CTA_URL} className="btn-dark-pill qm-navbar__cta" target="_blank" rel="noopener noreferrer">
           Book a Call
-          <i className="fas fa-arrow-right" style={{ fontSize: 11 }}></i>
+          <Icon name="arrow-right" aria-hidden style={{ fontSize: 11 }} />
         </a>
 
-        {/* ── Mobile hamburger ── */}
         <button
           className="qm-navbar__toggle"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
-          <i className={`fas ${open ? "fa-times" : "fa-bars"}`}></i>
+          <Icon name={open ? "times" : "bars"} aria-hidden />
         </button>
       </div>
 
-      {/* ── Mobile drawer ── */}
-      <div className={`qm-navbar__drawer${open ? " qm-navbar__drawer--open" : ""}`}>
+      <div className={`qm-navbar__drawer${open ? " qm-navbar__drawer--open" : ""}`} aria-hidden={!open}>
         <div className="container">
-          <ul className="qm-navbar__drawer-links">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="qm-navbar__drawer-link" onClick={close}>
+          <ul className="qm-navbar__drawer-links" role="list">
+            {SECTION_LINKS.map((link) => (
+              <li key={link.anchor}>
+                <a href={getHref(link.anchor)} className="qm-navbar__drawer-link" onClick={close}>
                   {link.label}
                 </a>
               </li>
             ))}
+            <li className="qm-navbar__drawer-sep" aria-hidden="true"></li>
+            <li><Link to="/about"   className="qm-navbar__drawer-link" onClick={close}>About Us</Link></li>
+            <li><Link to="/contact" className="qm-navbar__drawer-link" onClick={close}>Contact</Link></li>
           </ul>
-          <a href={CTA_URL} className="btn-dark-pill qm-navbar__drawer-cta" onClick={close}>
+          <a href={CTA_URL} className="btn-dark-pill qm-navbar__drawer-cta" onClick={close} target="_blank" rel="noopener noreferrer">
             Book a Call
-            <i className="fas fa-arrow-right" style={{ fontSize: 11 }}></i>
+            <Icon name="arrow-right" aria-hidden style={{ fontSize: 11 }} />
           </a>
         </div>
       </div>

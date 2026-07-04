@@ -1,27 +1,29 @@
+import Icon from "./Icon";
+
 const ADVANTAGES = [
   {
-    icon: "fas fa-filter",
+    icon: "filter" as const,
     title: "0% Fluff",
     description:
       "No useless transitions. Every single cut serves a psychological purpose to keep the viewer engaged.",
     dark: false,
   },
   {
-    icon: "fas fa-laptop-code",
+    icon: "laptop-code" as const,
     title: "Proprietary Portal",
     description:
       "Track assets, approve videos, and monitor your pipeline directly in your custom-built client dashboard.",
     dark: true,
   },
   {
-    icon: "fas fa-chart-line",
+    icon: "chart-line" as const,
     title: "Predictable ROI",
     description:
       "By fixing your retention rate we drastically lower your CAC and amplify your organic reach.",
     dark: true,
   },
   {
-    icon: "fas fa-cogs",
+    icon: "cogs" as const,
     title: "Full Automation",
     description:
       "We build the backend systems that turn viewers into paying clients — not just MP4 files.",
@@ -50,7 +52,7 @@ export default function WhyUs() {
               data-aos="fade-up"
             >
               <div className="why-icon">
-                <i className={adv.icon}></i>
+                <Icon name={adv.icon} />
               </div>
               <h5>{adv.title}</h5>
               <p>{adv.description}</p>

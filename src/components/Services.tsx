@@ -1,7 +1,9 @@
+import Icon from "./Icon";
+
 const SERVICES = [
   {
     step: "01",
-    icon: "fas fa-couch",
+    icon: "couch" as const,
     title: "Elite Comfort",
     description:
       "Instead of scripting, shooting, and editing — just tap 'Approve' from your couch and watch highly qualified leads flow effortlessly.",
@@ -9,7 +11,7 @@ const SERVICES = [
   },
   {
     step: "02",
-    icon: "fas fa-chart-pie",
+    icon: "chart-pie" as const,
     title: "The 50-30-20 Framework",
     description:
       "Our proprietary hook structure locks in attention in the first 3 seconds, sustains it through the argument, and converts at the CTA.",
@@ -17,7 +19,7 @@ const SERVICES = [
   },
   {
     step: "03",
-    icon: "fas fa-robot",
+    icon: "robot" as const,
     title: "Bespoke Automation",
     description:
       "Custom n8n workflows and AI chatbots turn your high-retention views into a frictionless, 24/7 lead generation machine.",
@@ -47,7 +49,7 @@ export default function Services() {
             >
               <p className="step-number">{svc.step}</p>
               <div className="svc-icon">
-                <i className={svc.icon}></i>
+                <Icon name={svc.icon} />
               </div>
               <h5>{svc.title}</h5>
               <p>{svc.description}</p>

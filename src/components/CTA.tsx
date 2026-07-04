@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 const CTA_URL = "https://cal.com/quantmedia/15min?overlayCalendar=true";
 
 export default function CTA() {
@@ -13,7 +15,7 @@ export default function CTA() {
           </p>
           <a href={CTA_URL} className="btn-cta-white">
             Book a Free Growth Audit
-            <i className="fas fa-arrow-right" style={{ fontSize: 12 }}></i>
+            <Icon name="arrow-right" style={{ fontSize: 12 }} />
           </a>
         </div>
       </div>

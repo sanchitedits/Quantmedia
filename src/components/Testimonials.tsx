@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 const TESTIMONIALS = [
   {
     quote:
@@ -27,9 +29,9 @@ export default function Testimonials() {
           {TESTIMONIALS.map((t) => (
             <div key={t.author} className="col-lg-6 col-md-12 mb-4">
               <div className="testimonial-card" data-aos="fade-up">
-                <div className="t-stars">
+                <div className="t-stars" aria-label="5 stars">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <i key={s} className="fa fa-star"></i>
+                    <Icon key={s} name="star" style={{ color: "var(--color-star)" }} />
                   ))}
                 </div>
                 <p className="t-quote">"{t.quote}"</p>
