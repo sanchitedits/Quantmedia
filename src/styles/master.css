@@ -1,0 +1,522 @@
+/*
+ * ============================================================
+ *  MASTER CSS — Quant Media
+ *  To completely redesign the site, change the variables below.
+ *  Every color, font, size, and spacing is controlled here.
+ * ============================================================
+ */
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Brand Colors */
+  --color-primary:        #614CAA;
+  --color-primary-light:  #E7E0F2;
+  --color-primary-shadow: rgba(97, 76, 170, 0.15);
+  --color-primary-hover:  rgba(97, 76, 170, 0.4);
+
+  /* Neutral Colors */
+  --color-dark:           #302C42;
+  --color-heading:        #111111;
+  --color-text:           #787878;
+  --color-text-muted:     #999999;
+  --color-bg:             #ffffff;
+  --color-bg-grey:        #f8f9fa;
+  --color-border:         #f0f0f0;
+  --color-border-dark:    #bcbcbc;
+  --color-white:          #ffffff;
+
+  /* Typography */
+  --font-main:            'Poppins', sans-serif;
+  --font-size-base:       14px;
+  --font-size-sm:         13px;
+  --font-size-label:      16px;
+  --font-size-h2-hero:    36px;
+  --font-size-h2:         32px;
+  --font-size-h3:         28px;
+  --font-size-h5:         20px;
+  --font-size-price:      38px;
+  --line-height-base:     22px;
+
+  /* Spacing */
+  --section-padding:      55px 0 75px 0;
+  --section-padding-lg:   55px 0 130px 0;
+  --border-radius-sm:     5px;
+  --border-radius:        10px;
+
+  /* Animation */
+  --transition:           all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --hover-lift:           translateY(-8px) scale(1.02);
+  --btn-hover-lift:       translateY(-2px);
+}
+
+/* ── Base Reset ─────────────────────────────────────────────── */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  font-family: var(--font-main);
+  line-height: var(--line-height-base);
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar { display: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+  color: var(--color-heading);
+}
+
+h1 { font-size: 34px; font-weight: 700; }
+h2 { font-size: var(--font-size-h2); font-weight: 600; }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: 24px; }
+h5 { font-size: var(--font-size-h5); font-weight: 500; }
+h6 { font-size: 15px; }
+
+a { color: var(--color-heading); }
+p { margin-top: 0; margin-bottom: 20px; }
+img { width: 100%; }
+ul { padding: 0; margin: 0; }
+li { list-style: none; }
+
+.section { padding: var(--section-padding); }
+.bg-grey { background-color: var(--color-bg-grey); }
+
+/* ── Button ─────────────────────────────────────────────────── */
+.btn-primary-qm {
+  display: inline-block;
+  background: var(--color-primary);
+  border: 0;
+  color: var(--color-white);
+  padding: 8px 20px;
+  border-radius: var(--border-radius-sm);
+  font-size: 15px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: var(--transition);
+}
+.btn-primary-qm:hover {
+  transform: var(--btn-hover-lift);
+  box-shadow: 0 4px 15px var(--color-primary-hover);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.btn-outline-qm {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-heading);
+  padding: 8px 20px;
+  border-radius: var(--border-radius-sm);
+  font-size: 15px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: var(--transition);
+}
+.btn-outline-qm:hover {
+  transform: var(--btn-hover-lift);
+  box-shadow: 0 4px 15px var(--color-primary-hover);
+  color: var(--color-heading);
+  text-decoration: none;
+}
+
+/* ── Section Label & Title ──────────────────────────────────── */
+.section-label {
+  color: var(--color-primary);
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.title-section {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.title-section .section-label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* ── Navbar ──────────────────────────────────────────────────── */
+.qm-navbar {
+  padding: 10px 0;
+}
+
+.qm-navbar .navbar-brand h2 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.6em;
+  color: var(--color-heading);
+}
+
+.qm-navbar .nav-link {
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  color: var(--color-heading);
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+  transition: color 0.3s;
+}
+
+.qm-navbar .nav-item:hover .nav-link,
+.qm-navbar .nav-link:hover {
+  color: var(--color-primary);
+}
+
+.qm-navbar .navbar-toggler:focus,
+.qm-navbar .navbar-toggler:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.hero-section {
+  background-image: url("/img/bg-hero.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hero-section .hero-content {
+  padding: 75px 0;
+}
+
+.hero-section .hero-content .section-label {
+  font-size: var(--font-size-label);
+}
+
+.hero-section .hero-content h2 {
+  font-size: var(--font-size-h2-hero);
+  font-weight: 700;
+  line-height: 46px;
+  margin: 20px 0;
+  color: var(--color-heading);
+}
+
+/* ── Who We Help ────────────────────────────────────────────── */
+.who-we-help-section {
+  background-image: url("/img/bg-about-us.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.who-we-help-section .feature-image {
+  padding-left: 40px;
+}
+
+/* ── Services ───────────────────────────────────────────────── */
+.services-section {
+  background-image: url("/img/bg.png");
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.service-card {
+  border-radius: var(--border-radius);
+  text-align: center;
+  transition: var(--transition);
+  height: 100%;
+}
+
+.service-card i {
+  color: var(--color-primary);
+}
+
+.service-card:hover {
+  box-shadow: 0 20px 40px var(--color-primary-shadow);
+  transform: var(--hover-lift);
+}
+
+/* ── Portfolio ──────────────────────────────────────────────── */
+.portfolio-section {
+  background-image: url("/img/bg2.png");
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 0 50px 0;
+}
+
+/* ── Pipeline (Features/Accordion) ─────────────────────────── */
+.pipeline-section {
+  padding: 0 0 130px 0;
+}
+
+.pipeline-section .feature-image {
+  padding-right: 40px;
+}
+
+.pipeline-section .section-label {
+  color: var(--color-primary);
+  font-size: var(--font-size-label);
+  font-weight: 600;
+}
+
+.pipeline-section .accordion .card {
+  border-radius: 0;
+}
+
+.pipeline-section .accordion .card-header {
+  background: var(--color-white);
+  padding: 3px 6px;
+  border-bottom: 0;
+}
+
+.pipeline-section .accordion .card-header button {
+  color: var(--color-heading);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  outline: none;
+}
+
+.pipeline-section .accordion .card-header button i {
+  margin-right: 15px;
+  color: var(--color-primary);
+}
+
+.pipeline-section .accordion .card-header button:hover {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.pipeline-section .accordion .card-header button:focus {
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.pipeline-section .accordion .collapse.show {
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Why Us ─────────────────────────────────────────────────── */
+.why-us-section {
+  background-image: url("/img/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 130px;
+}
+
+.advantage-card {
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.advantage-card i {
+  color: var(--color-primary);
+}
+
+.advantage-card:hover {
+  box-shadow: 0 20px 40px var(--color-primary-shadow);
+  transform: var(--hover-lift);
+}
+
+/* ── Testimonials ───────────────────────────────────────────── */
+.testimonials-section {
+  background-image: url("/img/bg.png");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 130px;
+  padding-top: 50px;
+}
+
+.testimonial-card {
+  border-radius: var(--border-radius);
+  border: 1px solid #ddd;
+  background: var(--color-white);
+  transition: var(--transition);
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 20px 40px var(--color-primary-shadow);
+  transform: var(--hover-lift);
+}
+
+.testimonial-card .stars li {
+  display: inline-block;
+}
+
+/* ── Pricing ────────────────────────────────────────────────── */
+.pricing-section {
+  background-image: url("/img/bg2.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 55px 0 130px;
+}
+
+.pricing-card {
+  text-align: center;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  margin: 0 15px;
+  transition: var(--transition);
+  border: 1px solid var(--color-border);
+}
+
+.pricing-card h3 {
+  font-size: var(--font-size-price);
+  color: var(--color-primary);
+  margin: 17px 0;
+}
+
+.pricing-card h3 span {
+  font-size: 16px;
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+.pricing-card ul li {
+  padding: 5px 0;
+}
+
+.pricing-card:hover {
+  box-shadow: 0 20px 40px var(--color-primary-shadow);
+  background: var(--color-white);
+  transform: var(--hover-lift);
+  border-color: transparent;
+}
+
+.pricing-card-featured {
+  background: var(--color-primary-light);
+  border: 1px solid transparent;
+}
+
+.pricing-card-featured ul li {
+  color: var(--color-heading);
+}
+
+.pricing-card-featured:hover {
+  background: var(--color-primary-light);
+  transform: var(--hover-lift);
+  box-shadow: 0 20px 40px var(--color-primary-shadow);
+}
+
+/* ── About Us ───────────────────────────────────────────────── */
+.about-us-section {
+  background-image: url("/img/bg-about-us.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.about-us-section .feature-image {
+  padding-right: 40px;
+}
+
+.about-us-section .section-label {
+  color: var(--color-primary);
+  font-size: var(--font-size-label);
+  font-weight: 600;
+}
+
+.about-us-section h2 {
+  margin: 20px 0;
+}
+
+/* ── Contact ────────────────────────────────────────────────── */
+.contact-section {
+  padding-bottom: 130px;
+}
+
+.contact-section .form-control {
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-main);
+}
+
+.contact-section .form-control:focus {
+  box-shadow: 0 0 0 3px var(--color-primary-shadow);
+  border-color: var(--color-primary);
+}
+
+/* ── CTA ─────────────────────────────────────────────────────── */
+.cta-section {
+  padding-bottom: 80px;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.qm-footer {
+  text-align: center;
+  background: var(--color-dark);
+  padding: 80px 20px;
+  color: #ddd;
+  line-height: var(--line-height-base);
+}
+
+.qm-footer h2 {
+  color: var(--color-white);
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.qm-footer p {
+  color: #ddd;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.qm-footer h6 {
+  color: #ddd;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+}
+
+.qm-footer .social-links {
+  margin: 22px 0;
+}
+
+.qm-footer .social-links li {
+  display: inline-block;
+  margin: 0 7px;
+}
+
+.qm-footer .social-links li a i {
+  color: var(--color-white);
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  line-height: 32px;
+  display: inline-block;
+  text-align: center;
+}
+
+.qm-footer .fa-instagram { background: #e1306c; }
+.qm-footer .fa-youtube   { background: #ff0000; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .navbar-brand { margin-left: 15px; }
+  .hero-section .entry-img { padding-top: 0; }
+  .who-we-help-section .feature-image { padding-left: 0; padding-bottom: 30px; }
+  .about-us-section .feature-image { padding-right: 0; padding-bottom: 30px; }
+  .pipeline-section .feature-image { padding-right: 0; padding-bottom: 30px; }
+  .pricing-card { margin: 0 0 30px 0; }
+  .qm-footer { padding: 80px 30px; }
+}
+
+@media (max-width: 575px) {
+  .container {
+    width: 100%;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+  .navbar-brand { margin-left: 0; }
+  .qm-navbar .nav-link { padding-left: 2px !important; }
+}
