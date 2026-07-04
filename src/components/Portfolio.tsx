@@ -4,45 +4,33 @@ const VIDEOS = [
   { id: "jgAnglNJcTQ", delay: 200 },
 ];
 
-const EMBED_PARAMS = "controls=0&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0";
+const EMBED_PARAMS =
+  "controls=1&rel=0&modestbranding=1&iv_load_policy=3";
 
 export default function Portfolio() {
   return (
     <section id="portfolio" className="portfolio-section section">
       <div className="container">
-        <div className="title-section">
-          <span className="section-label">Portfolio</span>
-          <h2>Discover our recent projects</h2>
+        <div className="section-header-center">
+          <span className="sec-badge">Portfolio</span>
+          <h2 className="sec-title">Recent Work</h2>
+          <p className="sec-sub">
+            High-retention videos engineered for founders who close.
+          </p>
         </div>
 
         <div className="row justify-content-center">
           {VIDEOS.map((v) => (
-            <div key={v.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div key={v.id} className="col-lg-4 col-md-6 mb-4">
               <div
+                className="portfolio-video-wrap"
                 data-aos="fade-up"
                 data-aos-delay={v.delay}
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  paddingBottom: "177.77%",
-                  height: 0,
-                  backgroundColor: "#000",
-                  borderRadius: 10,
-                  overflow: "hidden",
-                }}
               >
                 <iframe
                   src={`https://www.youtube.com/embed/${v.id}?${EMBED_PARAMS}`}
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                  }}
                   title={`Portfolio video ${v.id}`}
                 ></iframe>
               </div>

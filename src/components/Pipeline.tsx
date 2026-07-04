@@ -1,76 +1,57 @@
 const STEPS = [
   {
-    id: "collapseOne",
-    heading: "headingOne",
-    label: "Step 01 - Deep Analytics",
-    body: "We audit your channel data to find exactly where your current content is bleeding viewers.",
-    defaultOpen: true,
+    num: "01",
+    title: "Deep Analytics Audit",
+    body: "We dissect your channel data to find exactly where your content bleeds viewers — before writing a single word.",
   },
   {
-    id: "collapseTwo",
-    heading: "headingTwo",
-    label: "Step 02 - Hook Architecture",
+    num: "02",
+    title: "Hook Architecture",
     body: "We script and storyboard custom retention mechanisms designed specifically for your high-ticket demographic.",
-    defaultOpen: false,
   },
   {
-    id: "collapseThree",
-    heading: "headingThree",
-    label: "Step 03 - Precision Editing",
-    body: "Our editors apply psychological pacing, dynamic B-roll, and premium motion graphics to lock in attention.",
-    defaultOpen: false,
+    num: "03",
+    title: "Precision Editing",
+    body: "Our editors apply psychological pacing, dynamic B-roll, and premium motion graphics to lock in attention from first frame to CTA.",
+  },
+  {
+    num: "04",
+    title: "Deliver & Automate",
+    body: "Assets land in your portal on schedule. Automation flows activate to convert viewers into booked calls — hands-free.",
   },
 ];
 
 export default function Pipeline() {
   return (
-    <section id="how-we-do" className="pipeline-section">
+    <section id="how-we-do" className="pipeline-section section">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-lg-6 col-md-12 mb-4">
+          <div className="col-lg-5 col-md-12 mb-4">
             <img
               src="/img/about-us.png"
-              alt="Our pipeline process"
-              className="img-fluid pipeline-section feature-image"
+              alt="Quant Media pipeline process"
             />
           </div>
 
-          <div className="col-lg-6 col-md-12 mb-4" data-aos="fade-up">
-            <span className="section-label">The Pipeline</span>
-            <h2>How We Scale Your Brand, Step-by-Step</h2>
-            <p>
-              We don't just guess what works. We use a data-driven approach
-              to ensure every piece of content performs.
+          <div className="col-lg-7 col-md-12 pl-lg-5" data-aos="fade-up">
+            <span className="sec-badge">The Pipeline</span>
+            <h2 className="sec-title mb-3">
+              Step-by-Step to
+              <br />
+              Scalable Reach
+            </h2>
+            <p className="sec-sub mb-4">
+              We don't guess. Every deliverable is grounded in data before
+              a single edit is made.
             </p>
 
-            <div className="accordion mt-4" id="pipelineAccordion">
+            <div className="mt-2">
               {STEPS.map((step) => (
-                <div key={step.id} className="card border-0 mb-2">
-                  <div className="card-header bg-white border-0 p-0" id={step.heading}>
-                    <h5 className="mb-0">
-                      <button
-                        className={`btn btn-link text-dark font-weight-bold p-0 text-left w-100${step.defaultOpen ? "" : " collapsed"}`}
-                        type="button"
-                        data-toggle="collapse"
-                        data-target={`#${step.id}`}
-                        aria-expanded={step.defaultOpen}
-                        aria-controls={step.id}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <i className="fas fa-plus mr-2" style={{ color: "var(--color-primary)" }}></i>
-                        {step.label}
-                      </button>
-                    </h5>
-                  </div>
-                  <div
-                    id={step.id}
-                    className={`collapse${step.defaultOpen ? " show" : ""}`}
-                    aria-labelledby={step.heading}
-                    data-parent="#pipelineAccordion"
-                  >
-                    <div className="card-body text-muted px-4 py-3">
-                      {step.body}
-                    </div>
+                <div key={step.num} className="pipeline-step">
+                  <div className="pipeline-step-num">{step.num}</div>
+                  <div className="pipeline-step-body">
+                    <h5>{step.title}</h5>
+                    <p>{step.body}</p>
                   </div>
                 </div>
               ))}

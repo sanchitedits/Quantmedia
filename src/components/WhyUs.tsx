@@ -4,59 +4,56 @@ const ADVANTAGES = [
     title: "0% Fluff",
     description:
       "No useless transitions. Every single cut serves a psychological purpose to keep the viewer engaged.",
-    delay: 0,
+    dark: false,
   },
   {
     icon: "fas fa-laptop-code",
     title: "Proprietary Portal",
     description:
       "Track assets, approve videos, and monitor your pipeline directly in your custom-built client dashboard.",
-    delay: 100,
+    dark: true,
   },
   {
     icon: "fas fa-chart-line",
     title: "Predictable ROI",
     description:
-      "By fixing your retention rate, we drastically lower your CAC and amplify your organic reach.",
-    delay: 200,
+      "By fixing your retention rate we drastically lower your CAC and amplify your organic reach.",
+    dark: true,
   },
   {
     icon: "fas fa-cogs",
     title: "Full Automation",
     description:
-      "We don't just deliver MP4s. We build the backend systems that turn viewers into paying clients.",
-    delay: 300,
+      "We build the backend systems that turn viewers into paying clients — not just MP4 files.",
+    dark: false,
   },
 ];
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="why-us-section section bg-grey">
+    <section id="why-us" className="why-us-section section">
       <div className="container">
-        <div className="title-section">
-          <span className="section-label">The Quant Advantage</span>
-          <h2>Standard Editing vs. Retention Engineering</h2>
+        <div className="section-header-center">
+          <span className="sec-badge">The Quant Advantage</span>
+          <h2 className="sec-title">Why Founders Choose Us</h2>
+          <p className="sec-sub">
+            The delta between standard video editing and retention
+            engineering is the difference between views and revenue.
+          </p>
         </div>
 
-        <div className="row">
+        <div className="bento-grid-why">
           {ADVANTAGES.map((adv) => (
-            <div key={adv.title} className="col-lg-6 col-md-12 mb-4">
-              <div
-                className="advantage-card d-flex align-items-start bg-white p-4 h-100"
-                data-aos="fade-up"
-                data-aos-delay={adv.delay}
-              >
-                <div className="mr-4 flex-shrink-0">
-                  <i
-                    className={adv.icon}
-                    style={{ fontSize: 50, color: "var(--color-primary)" }}
-                  ></i>
-                </div>
-                <div>
-                  <h5 className="mb-2 font-weight-bold">{adv.title}</h5>
-                  <p className="text-muted mb-0">{adv.description}</p>
-                </div>
+            <div
+              key={adv.title}
+              className={`bento-why-card${adv.dark ? " dark" : ""}`}
+              data-aos="fade-up"
+            >
+              <div className="why-icon">
+                <i className={adv.icon}></i>
               </div>
+              <h5>{adv.title}</h5>
+              <p>{adv.description}</p>
             </div>
           ))}
         </div>

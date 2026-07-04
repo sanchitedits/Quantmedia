@@ -1,13 +1,12 @@
 const NAV_LINKS = [
-  { label: "Home",      href: "#hero" },
-  { label: "Mechanism", href: "#about-us" },
-  { label: "Pipeline",  href: "#how-we-do" },
   { label: "Services",  href: "#what-we-do" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Advantage", href: "#why-us" },
+  { label: "Pipeline",  href: "#how-we-do" },
   { label: "Pricing",   href: "#pricing" },
   { label: "Contact",   href: "#contact" },
 ];
+
+const CTA_URL = "https://cal.com/quantmedia/15min?overlayCalendar=true";
 
 export default function Navbar() {
   return (
@@ -18,7 +17,7 @@ export default function Navbar() {
         </a>
 
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNav"
@@ -26,11 +25,11 @@ export default function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <i className="fas fa-align-justify"></i>
+          <i className="fas fa-bars" style={{ color: "var(--color-heading)", fontSize: 16 }}></i>
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
+          <ul className="navbar-nav mx-auto">
             {NAV_LINKS.map((link) => (
               <li key={link.href} className="nav-item">
                 <a className="nav-link" href={link.href}>
@@ -39,6 +38,10 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <a href={CTA_URL} className="btn-dark-pill navbar-cta">
+            Book a Call
+            <i className="fas fa-arrow-right" style={{ fontSize: 12 }}></i>
+          </a>
         </div>
       </div>
     </nav>
